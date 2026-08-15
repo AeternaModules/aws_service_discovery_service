@@ -12,7 +12,7 @@ output "service_discovery_services_description" {
 }
 output "service_discovery_services_dns_config" {
   description = "Map of dns_config values across all service_discovery_services, keyed the same as var.service_discovery_services"
-  value       = { for k, v in aws_service_discovery_service.service_discovery_services : k => v.dns_config if v.dns_config != null && length(v.dns_config) > 0 }
+  value       = { for k, v in aws_service_discovery_service.service_discovery_services : k => one(v.dns_config) if v.dns_config != null && length(v.dns_config) > 0 }
 }
 output "service_discovery_services_force_destroy" {
   description = "Map of force_destroy values across all service_discovery_services, keyed the same as var.service_discovery_services"
@@ -20,11 +20,11 @@ output "service_discovery_services_force_destroy" {
 }
 output "service_discovery_services_health_check_config" {
   description = "Map of health_check_config values across all service_discovery_services, keyed the same as var.service_discovery_services"
-  value       = { for k, v in aws_service_discovery_service.service_discovery_services : k => v.health_check_config if v.health_check_config != null && length(v.health_check_config) > 0 }
+  value       = { for k, v in aws_service_discovery_service.service_discovery_services : k => one(v.health_check_config) if v.health_check_config != null && length(v.health_check_config) > 0 }
 }
 output "service_discovery_services_health_check_custom_config" {
   description = "Map of health_check_custom_config values across all service_discovery_services, keyed the same as var.service_discovery_services"
-  value       = { for k, v in aws_service_discovery_service.service_discovery_services : k => v.health_check_custom_config if v.health_check_custom_config != null && length(v.health_check_custom_config) > 0 }
+  value       = { for k, v in aws_service_discovery_service.service_discovery_services : k => one(v.health_check_custom_config) if v.health_check_custom_config != null && length(v.health_check_custom_config) > 0 }
 }
 output "service_discovery_services_name" {
   description = "Map of name values across all service_discovery_services, keyed the same as var.service_discovery_services"
